@@ -1,0 +1,3 @@
+[submodule "magnet"]
+	path = magnet
+	url = https://github.com/treangenlab/magnet.git
