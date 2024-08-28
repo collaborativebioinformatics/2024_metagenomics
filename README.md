@@ -1,6 +1,6 @@
 # MIMIC Metagenome Simulator
 
 ### MIMIC Workflow
-![alt text](Workflow.png)
+![alt text](docs/img/Workflow.png)
 
 # Introduction
