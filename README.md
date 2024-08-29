@@ -33,6 +33,25 @@ being applied to real-world data.
 
 ## Dependencies
 
+### To generate simulated reads
+Python 3.9
+NCBI Datasets v15.27.1
+Minimap2 v2.24-r1122
+Samtools v1.15.1
+Biopython
+Pandas
+Ete3 v3.1.2
+BWA v0.7.17
+FastANI
+Kraken2 
+Bracken
+Nanosim
+
+### To generate truth table
+
+### Other 
+
+
 ## How to use It
 
 ### MIMIC Workflow
