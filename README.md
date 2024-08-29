@@ -27,9 +27,8 @@ we built The MIMIC Metagenome simulator.
 The MIMIC Metagenome simulator creates simulated Oxford Nanopore (ONT) reads from any existing 
 metagenomic community by taking in a fastq file and analyzing the naturally occurring microbial abundances. 
 This tool can be beneficial to accurately evaluate and benchmark bioinformatics algorithms, and 
-enable to generate artificial fastq files and abundance tables. Cost-effective simulation and controlled 
-environment facilitate bioinformatic tool testing, ensuring that tools perform as expected. 
-
+enable to generate artificial abundance table, and fastq file including the precision and accuracy metrics evaluation.
+Cost-effective simulation and controlled environment facilitate bioinformatic tool testing, ensuring that tools perform as expected. 
 
 
 ## Installation
