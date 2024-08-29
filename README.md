@@ -1,9 +1,11 @@
 # MIMIC Metagenome Simulator
 
-Hello to everybody. Here you find information to the MIMIC pipeline, which has been developed 
-during the 2024 Hackathon at HGSC-BCM by the Metagenomics team. 
-Our pipeline simulates results of the long read sequencing, and prvoides artifical metagenomes. 
-As a results, the abundance table and fastq file are avaliable.  
+The MIMIC Metagenome simulator creates simulated Oxford Nanopore (ONT) reads from any existing metagenomic community
+by taking in a fastq file and analyzing the naturally occurring microbial abundances. 
+
+This project was conceptualized and built during the
+Baylor College of Medicine Human Genome Sequencing Center (HGSC) 2024 Hackathon. 
+
 
 ![alt text](docs/img/logo_small.png)
 
