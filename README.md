@@ -62,7 +62,7 @@ being applied to real-world data.
 
 ## Contributors
 
-Hackathon team: Todd	Treangen, Shwetha	Kumar, Ryan	Doughty, Sumaiya	Khan, Iva	Kotásková, Arthur	Kasambula, Mike	Nute
+Hackathon team: Todd	Treangen, Shwetha	Kumar, Ryan	Doughty, Sumaiya	Khan, Iva	Kotásková, Arthur	Shem Kasambula, Mike	Nute
 
 ## References 
 
