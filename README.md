@@ -5,6 +5,7 @@ during the 2024 Hackathon at HGSC-BCM by the Metagenomics team.
 Our pipeline simulates results of the long read sequencing, and prvoides artifical metagenomes. 
 As a results, the abundance table and fastq file are avaliable.  
 
+![alt text](docs/img/logo_small.png)
 
 ## Table of Contents 
 1. [Introduction](#introduction) 
@@ -55,8 +56,9 @@ being applied to real-world data.
 
 ## How to use It
 
+
 ### MIMIC Workflow
-![alt text](docs/img/Workflow.png)
+![alt text](docs/img/workflow_v2.png)
 
 ## Contributors
 
