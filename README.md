@@ -58,7 +58,7 @@ being applied to real-world data.
 
 
 ### MIMIC Workflow
-![alt text](docs/img/Workflow.png)
+![alt text](docs/img/workflow_v2.png)
 
 ## Contributors
 
