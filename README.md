@@ -37,7 +37,7 @@ Oxford Nanopore (ONT) sequencing is rapidly becoming a widely used sequencing te
 - [ ] Add gene gain/gene loss events into the reference genomes
 
 ### MIMIC Workflow
-![alt text](docs/img/flowchart_v3.png)
+![alt text](docs/img/flowchart_v8.png)
 
 
 ## Installation
