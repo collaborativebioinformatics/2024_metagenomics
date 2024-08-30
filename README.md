@@ -34,6 +34,10 @@ Oxford Nanopore (ONT) sequencing is rapidly becoming a widely used sequencing te
 - [ ] Add installation and usage details to readme
 - [ ] Add gene gain/gene loss events into the reference genomes
 
+### MIMIC Workflow
+![alt text](docs/img/flowchart_v3.png)
+
+
 ## Installation
 Mimic can be installed using the following steps: 
 `````
@@ -66,34 +70,25 @@ arguments:
                         Number of threads for multithreading (Default: 1)
   -r READS, --reads READS
                         Number of simulated reads to generate (Default: 100)
+  --simulate-only
+                        Only runs simulation (must have already run pipeline on sample once, will override existing simulated data)
+
 `````
 
-
-## Dependencies
-
-### To generate simulated reads
-
-- Python 3.9
-- NCBI Datasets v15.27.1
-- Minimap2 v2.24-r1122
-- Samtools v1.15.1
-- Biopython
-- Pandas
-- Ete3 v3.1.2
-- BWA v0.7.17
-- FastANI
-- Nanosim
-
-### To generate truth table
-
-### Other 
+Some helpful things to keep in mind:
+- Depending on the file size, the lemur/magnet/nanosim model generation steps are the slowest. Thus, once run on a sample, use the `--simulate-only` tag to generate new simulated data based off that profile
 
 
-## How to use It
+## Pipeline Outputs:
+The following provides a brief description of important outputs from the Mimic simulator, assuming `-o output`
 
-
-### MIMIC Workflow
-![alt text](docs/img/flowchart_v3.png)
+`output/lemur/relative_abundance.tsv` -- Initial taxonomic profiling file from Lemur. Column 1 is taxonomy ID, and 'F' column is the relative abundance
+`output/magnet/cluster_representative.tsv` -- Magnet details, including reference details as well as the presence/absence calls in the final column
+`output/magnet/reference_genomes/*` -- Location of downloaded reference genomes from Magnet, note that not all will be included in Nanosim simulation
+`output/nanosim/abundances.tsv` -- contains species and abundances inputted into nanosim, top row contains number of reads generated
+`output/nanosim/genome_list1.tsv` -- contains species and reference genome location, as well as input abundance
+`output/nanosim/genome_list2.tsv` -- same as above, without abundances
+`output/simulated_data/simulated.fasta` -- the simulated fasta files. See the nanosim documentation for description on the read headers
 
 ## Contributors
 
