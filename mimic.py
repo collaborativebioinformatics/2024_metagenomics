@@ -69,45 +69,47 @@ def run_mimic(args):
     threads = args.threads
     lemur_db = args.db
     num_reads = args.reads
+    simulate_only = args.simulate_only
     
-    
-    initialize_working(output)
-    
-    ## run lemur
-    lemur_out = os.path.join(output, 'lemur')
-    report_loc = run_lemur(fastq1, lemur_db, lemur_out, threads=threads)
-    report_loc = os.path.join(lemur_out, 'relative_abundance.tsv')
-    
-    magnet_out = os.path.join(output, 'magnet')
-    
-    if fastq2 is not None:
-        subprocess.run(['python', 'magnet/magnet.py',
-                        '-c', report_loc,
-                        '-i', fastq1,
-                        '-I', fastq2, 
-                        '-o', magnet_out,
-                        '--threads', str(threads)], check=True)
-    else:
-        subprocess.run(['python', 'magnet/magnet.py',
-                        '-c', report_loc,
-                        '-i', fastq1,
-                        '-o', magnet_out,
-                        '-a', '12',
-                        '--threads', str(threads)], check=True)
-    
-    magnet_report = os.path.join(magnet_out, 'cluster_representative.csv')
-    if not os.path.exists(magnet_report):
-        raise SystemExit('Magnet failed')
-    
-    
-    ## get necessary files for the nanosim input and run nanosim
     nanosim_loc = os.path.join(output, 'nanosim')
-    genome_list = prep_sim_lemur(magnet_report, report_loc, nanosim_loc, output, num_reads)
-    species_info = generate_species_file_info(genome_list, nanosim_loc)
-    
-    genome_list_loc = os.path.join(nanosim_loc, 'genome_list1.tsv')
-    run_read_analysis(fastq1, genome_list_loc, nanosim_loc, threads=threads) ## nanosim step 1
+    lemur_out = os.path.join(output, 'lemur')
+    magnet_out = os.path.join(output, 'magnet')
 
+    
+    if not simulate_only:
+        initialize_working(output)
+        
+        ## run lemur
+        report_loc = run_lemur(fastq1, lemur_db, lemur_out, threads=threads)
+        report_loc = os.path.join(lemur_out, 'relative_abundance.tsv')
+                
+        if fastq2 is not None:
+            subprocess.run(['python', 'magnet/magnet.py',
+                            '-c', report_loc,
+                            '-i', fastq1,
+                            '-I', fastq2, 
+                            '-o', magnet_out,
+                            '--threads', str(threads)], check=True)
+        else:
+            subprocess.run(['python', 'magnet/magnet.py',
+                            '-c', report_loc,
+                            '-i', fastq1,
+                            '-o', magnet_out,
+                            '-a', '12',
+                            '--threads', str(threads)], check=True)
+        
+        magnet_report = os.path.join(magnet_out, 'cluster_representative.csv')
+        if not os.path.exists(magnet_report):
+            raise SystemExit('Magnet failed')
+        
+        
+        ## get necessary files for the nanosim input and run nanosim
+        genome_list = prep_sim_lemur(magnet_report, report_loc, nanosim_loc, output, num_reads)
+        species_info = generate_species_file_info(genome_list, nanosim_loc)
+        
+        genome_list_loc = os.path.join(nanosim_loc, 'genome_list1.tsv')
+        run_read_analysis(fastq1, genome_list_loc, nanosim_loc, threads=threads) ## nanosim step 1
+        
     genome_list_loc = os.path.join(nanosim_loc, 'genome_list2.tsv')
     abundances = os.path.join(nanosim_loc, 'abundances.tsv')
     species_loc = os.path.join(nanosim_loc, 'species_info.tsv')
@@ -129,6 +131,7 @@ def parse_args():
     parser.add_argument("--db", type=str, required=True, help='Kraken2 database location')
     parser.add_argument('-t', '--threads', type=int, required=False, default=1, help='Number of threads for multithreading (Default: 1)')
     parser.add_argument('-r', '--reads', type=int, required=True, default=100, help='Number of simulated reads to generate')
+    parser.add_argument('--simulate-only', action='store_true', help='Only runs simulation (must have already run pipeline on sample once, will override existing simulated data)')
     
     args = parser.parse_args() 
     
