@@ -70,6 +70,7 @@ def run_mimic(args):
     lemur_db = args.db
     num_reads = args.reads
     simulate_only = args.simulate_only
+    perfect = args.perfect
     
     nanosim_loc = os.path.join(output, 'nanosim')
     lemur_out = os.path.join(output, 'lemur')
@@ -114,13 +115,16 @@ def run_mimic(args):
     abundances = os.path.join(nanosim_loc, 'abundances.tsv')
     species_loc = os.path.join(nanosim_loc, 'species_info.tsv')
    
-    run_sim(genome_list_loc, abundances, species_loc, nanosim_loc, threads=threads) ## nanosim step 2
+    run_sim(genome_list_loc, abundances, species_loc, nanosim_loc, perfect=perfect, threads=threads) ## nanosim step 2
     
     ##concatenate the two fasta files and shuffle results (TODO: quick and dirty solution, will fix)
     subprocess.run(f'cat {output}/nanosim/*.fasta > {output}/nanosim/simulated.fasta', shell=True, check=True)
     subprocess.run(f'rm {output}/nanosim/simulated_sample*.fasta ', shell=True, check=True)
     subprocess.run(f'mv {output}/nanosim/simulated.fasta {output}/simulated_data/', shell=True, check=True)
-    subprocess.run(f'mv {output}/nanosim/simulated_sample* {output}/simulated_data/error_data', shell=True, check=True)
+    if not perfect:
+        subprocess.run(f'mv {output}/nanosim/simulated_sample* {output}/simulated_data/error_data', shell=True, check=True)
+    else:
+        subprocess.run(f'rm {output}/nanosim/simulated_sample*', shell=True, check=True)
 
     
 def parse_args():
@@ -132,6 +136,7 @@ def parse_args():
     parser.add_argument('-t', '--threads', type=int, required=False, default=1, help='Number of threads for multithreading (Default: 1)')
     parser.add_argument('-r', '--reads', type=int, required=True, default=100, help='Number of simulated reads to generate')
     parser.add_argument('--simulate-only', action='store_true', help='Only runs simulation (must have already run pipeline on sample once, will override existing simulated data)')
+    parser.add_argument('--perfect', action='store_true', help='Will generate perfect reads with no errors')
     
     args = parser.parse_args() 
     

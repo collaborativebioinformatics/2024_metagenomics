@@ -12,15 +12,25 @@ def run_read_analysis(fastq:str, genome_list:str, out_loc:str, threads:int=1):
                     '-o', out_loc + '/training/training',
                     '-t', str(threads)], check=True)
     
-def run_sim(genome_list:str, abundance_list:str, species_list:str, out_loc:str, threads:int=1):
+def run_sim(genome_list:str, abundance_list:str, species_list:str, out_loc:str, perfect:bool=False, threads:int=1):
     
-    subprocess.run(['simulator.py', 'metagenome',
-                    '-gl', genome_list,
-                    '-a', abundance_list,
-                    '-dl', species_list,
-                    '-c', out_loc + '/training/training',
-                    '-o', out_loc + '/simulated',
-                    '-t', str(threads)], check=True)
+    if perfect:
+        subprocess.run(['simulator.py', 'metagenome',
+                        '-gl', genome_list,
+                        '-a', abundance_list,
+                        '-dl', species_list,
+                        '-c', out_loc + '/training/training',
+                        '-o', out_loc + '/simulated',
+                        '--perfect',
+                        '-t', str(threads)], check=True)
+    else:
+        subprocess.run(['simulator.py', 'metagenome',
+                        '-gl', genome_list,
+                        '-a', abundance_list,
+                        '-dl', species_list,
+                        '-c', out_loc + '/training/training',
+                        '-o', out_loc + '/simulated',
+                        '-t', str(threads)], check=True)
 
 def get_lemur_abundance(taxid, lemur_data):
     try:
