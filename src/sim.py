@@ -32,7 +32,7 @@ def get_lemur_abundance(taxid, lemur_data):
     except KeyError:
         return 0
 
-def prep_sim_lemur(metadata_loc, lemur_data_loc, out, number_reads_generated):
+def prep_sim_lemur(metadata_loc, lemur_data_loc, out, working, number_reads_generated):
     
     lemur_data = pd.read_csv(lemur_data_loc, delimiter='\t')
     print(lemur_data)
@@ -47,7 +47,7 @@ def prep_sim_lemur(metadata_loc, lemur_data_loc, out, number_reads_generated):
         genome_list['Abundance'] = np.round(genome_list['Abundance'] / total_abundance * 100, 2)
     
     ## fix the locations names and drop unnecessary taxonomy column
-    genome_list['Assembly Accession ID'] = 'test/magnet/reference_genomes/' + genome_list['Assembly Accession ID'].astype(str) + '.fasta'
+    genome_list['Assembly Accession ID'] = f'{working}/magnet/reference_genomes/' + genome_list['Assembly Accession ID'].astype(str) + '.fasta'
 
     ## select final columns
     genome_list = genome_list[['Organism of Assembly', 'Assembly Accession ID', 'Abundance']]

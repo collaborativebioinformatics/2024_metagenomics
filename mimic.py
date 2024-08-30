@@ -99,7 +99,7 @@ def run_mimic(args):
     
     ## get necessary files for the nanosim input and run nanosim
     nanosim_loc = os.path.join(output, 'nanosim')
-    genome_list = prep_sim_lemur(magnet_report, report_loc, nanosim_loc, num_reads)
+    genome_list = prep_sim_lemur(magnet_report, report_loc, nanosim_loc, output, num_reads)
     species_info = generate_species_file_info(genome_list, nanosim_loc)
     
     genome_list_loc = os.path.join(nanosim_loc, 'genome_list1.tsv')
