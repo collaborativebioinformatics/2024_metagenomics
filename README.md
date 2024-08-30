@@ -39,6 +39,11 @@ Oxford Nanopore (ONT) sequencing is rapidly becoming a widely used sequencing te
 ### MIMIC Workflow
 ![alt text](docs/img/flowchart_v8.png)
 
+The MIMIC workflow takes in Oxford Nanopore metagenomic reads in fastq format, these reads are then processed by Lemur[^2], which performs an initial taxonomic profiling and generates an abundance table. The profile is then fed into Magnet [^2], which downloads all of the reference genomes and performs competitive read-alignment in order to determine final presence/absence calls. Abundances from Lemur are then mapped to the present genomes, which are inputted into Nanosim. Nanosim outputs a simulated file in fasta files, as well as the error profiles (if --perfect not used). A full description of the outputs is included below. 
+
+The second aspect in the pipeline is to compare to existing tools. ADD INFO HERE
+
+
 
 ## Installation
 Mimic can be installed using the following steps: 
