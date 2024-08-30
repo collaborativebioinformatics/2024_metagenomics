@@ -35,6 +35,39 @@ Oxford Nanopore (ONT) sequencing is rapidly becoming a widely used sequencing te
 - [ ] Add awesome features
 
 ## Installation
+Mimic can be installed using the following steps: 
+`````
+## Clone the git repository
+git clone https://github.com/collaborativebioinformatics/Mimic.git
+
+## cd into the repository
+cd Mimic/
+
+## Setup the conda environment
+conda env create -f mimic_env.yml
+conda activate mimic
+`````
+
+## Usage
+Mimic can be run using the following command:
+`````
+python mimic.py -i [fastq] -o [output_loc] -r [num_reads] --db [lemur_db] -t [threads]
+
+arguments:
+  -h, --help            show help message and exit
+  -i FASTQ, --fastq FASTQ
+                        Path to first fastq file (required)
+  -I FASTQ2, --fastq2 FASTQ2
+                        Path to second fastq file for paired-end reads
+  -o OUTPUT, --output OUTPUT
+                        Path to the output directory (required)
+  --db DB               Lemur database location (required)
+  -t THREADS, --threads THREADS
+                        Number of threads for multithreading (Default: 1)
+  -r READS, --reads READS
+                        Number of simulated reads to generate (Default: 100)
+`````
+
 
 ## Dependencies
 
