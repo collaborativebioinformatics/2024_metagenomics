@@ -82,13 +82,13 @@ Some helpful things to keep in mind:
 ## Pipeline Outputs:
 The following provides a brief description of important outputs from the Mimic simulator, assuming `-o output`
 
-`output/lemur/relative_abundance.tsv` -- Initial taxonomic profiling file from Lemur. Column 1 is taxonomy ID, and 'F' column is the relative abundance
-`output/magnet/cluster_representative.tsv` -- Magnet details, including reference details as well as the presence/absence calls in the final column
-`output/magnet/reference_genomes/*` -- Location of downloaded reference genomes from Magnet, note that not all will be included in Nanosim simulation
-`output/nanosim/abundances.tsv` -- contains species and abundances inputted into nanosim, top row contains number of reads generated
-`output/nanosim/genome_list1.tsv` -- contains species and reference genome location, as well as input abundance
-`output/nanosim/genome_list2.tsv` -- same as above, without abundances
-`output/simulated_data/simulated.fasta` -- the simulated fasta files. See the nanosim documentation for description on the read headers
+`output/lemur/relative_abundance.tsv` -- Initial taxonomic profiling file from Lemur. Column 1 is taxonomy ID, and 'F' column is the relative abundance   
+`output/magnet/cluster_representative.tsv` -- Magnet details, including reference details as well as the presence/absence calls in the final column   
+`output/magnet/reference_genomes/*` -- Location of downloaded reference genomes from Magnet, note that not all will be included in Nanosim simulation   
+`output/nanosim/abundances.tsv` -- contains species and abundances inputted into nanosim, top row contains number of reads generated     
+`output/nanosim/genome_list1.tsv` -- contains species and reference genome location, as well as input abundance    
+`output/nanosim/genome_list2.tsv` -- same as above, without abundances   
+`output/simulated_data/simulated.fasta` -- the simulated fasta files. See the nanosim documentation for description on the read headers  
 
 ## Contributors
 
