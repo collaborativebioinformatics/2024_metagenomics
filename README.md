@@ -10,13 +10,15 @@ Baylor College of Medicine Human Genome Sequencing Center (HGSC) 2024 Hackathon.
 ![alt text](docs/img/logo_small.png)
 
 ## Table of Contents 
-1. [Introduction](#introduction) 
-2. [Installation](#installation) 
-3. [Dependencies](#dependencies)
-4. [How to use It](#how-to-use-it) 
-6. [MIMIC workflow](#mimic-workflow) 
-7. [Contributors](#contributors) 
-8. [References](#references) 
+1. [Introduction](#introduction)
+2. [MIMIC workflow](#mimic-workflow) 
+3. [Installation](#installation) 
+4. [Usage](#usage)
+5. [Outputs](#MIMIC-Simulator-Pipeline-Outputs)
+6. [Truth Table](#Example-truth-table)
+7. [Example](#Soil-example)
+8. [Contributors](#contributors) 
+9. [References](#references) 
 
 
 ## Introduction
@@ -81,7 +83,7 @@ Some helpful things to keep in mind:
 - Depending on the file size, the lemur/magnet/nanosim model generation steps are the slowest. Thus, once run on a sample, use the `--simulate-only` tag to generate new simulated data based off that profile
 
 
-## MIMIC Simulator Pipeline Outputs:
+## MIMIC Simulator Pipeline Outputs
 The following provides a brief description of important outputs from the Mimic simulator, assuming `-o output`
 
 `output/lemur/relative_abundance.tsv` -- Initial taxonomic profiling file from Lemur. Column 1 is taxonomy ID, and 'F' column is the relative abundance   
