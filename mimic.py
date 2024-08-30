@@ -73,6 +73,7 @@ def run_mimic(args):
     ## run lemur
     lemur_out = os.path.join(output, 'lemur')
     report_loc = run_lemur(fastq1, lemur_db, lemur_out, threads=threads)
+    report_loc = os.path.join(lemur_out, 'relative_abundance.tsv')
     
     magnet_out = os.path.join(output, 'magnet')
     
@@ -82,7 +83,6 @@ def run_mimic(args):
                         '-i', fastq1,
                         '-I', fastq2, 
                         '-o', magnet_out,
-                        '--min-abundance', '0.1',
                         '--threads', str(threads)], check=True)
     else:
         subprocess.run(['python', 'magnet/magnet.py',
@@ -90,7 +90,6 @@ def run_mimic(args):
                         '-i', fastq1,
                         '-o', magnet_out,
                         '-a', '12',
-                        '--min-abundance', '0.01',
                         '--threads', str(threads)], check=True)
     
     magnet_report = os.path.join(magnet_out, 'cluster_representative.csv')
@@ -111,6 +110,12 @@ def run_mimic(args):
     species_loc = os.path.join(nanosim_loc, 'species_info.tsv')
    
     run_sim(genome_list_loc, abundances, species_loc, nanosim_loc, threads=threads) ## nanosim step 2
+    
+    ##concatenate the two fasta files and shuffle results (TODO: quick and dirty solution, will fix)
+    subprocess.run(f'cat {output}/nanosim/*.fasta > test/nanosim/simulated.fasta', shell=True, check=True)
+    subprocess.run(f'rm {output}/nanosim/simulated_sample*.fasta ', shell=True, check=True)
+    subprocess.run(f'mv {output}/nanosim/simulated.fasta test/simulated_data/', shell=True, check=True)
+    subprocess.run(f'mv {output}/nanosim/simulated_sample* test/simulated_data/error_data', shell=True, check=True)
 
     
 def parse_args():
