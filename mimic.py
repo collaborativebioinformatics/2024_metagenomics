@@ -54,6 +54,9 @@ def initialize_working(working:str):
         nanosim = os.path.join(working, 'nanosim')
         os.mkdir(nanosim)
         
+        simulated_data = os.path.join(working, 'simulated_data')
+        os.mkdir(simulated_data)
+        
         print('Initialized Working Directory\n')
     
 def run_mimic(args):
@@ -112,10 +115,10 @@ def run_mimic(args):
     run_sim(genome_list_loc, abundances, species_loc, nanosim_loc, threads=threads) ## nanosim step 2
     
     ##concatenate the two fasta files and shuffle results (TODO: quick and dirty solution, will fix)
-    subprocess.run(f'cat {output}/nanosim/*.fasta > test/nanosim/simulated.fasta', shell=True, check=True)
+    subprocess.run(f'cat {output}/nanosim/*.fasta > {output}/nanosim/simulated.fasta', shell=True, check=True)
     subprocess.run(f'rm {output}/nanosim/simulated_sample*.fasta ', shell=True, check=True)
-    subprocess.run(f'mv {output}/nanosim/simulated.fasta test/simulated_data/', shell=True, check=True)
-    subprocess.run(f'mv {output}/nanosim/simulated_sample* test/simulated_data/error_data', shell=True, check=True)
+    subprocess.run(f'mv {output}/nanosim/simulated.fasta {output}/simulated_data/', shell=True, check=True)
+    subprocess.run(f'mv {output}/nanosim/simulated_sample* {output}/simulated_data/error_data', shell=True, check=True)
 
     
 def parse_args():
