@@ -72,6 +72,8 @@ arguments:
                         Number of simulated reads to generate (Default: 100)
   --simulate-only
                         Only runs simulation (must have already run pipeline on sample once, will override existing simulated data)
+  --perfect
+                        Will generate perfect reads from the genomes, ignores nanosim profiles
 
 `````
 
@@ -105,7 +107,7 @@ Trebonia kvetii	35.78
 `````
 
 ## Soil Example
-We ran the Mimic pipeline on the following SRA samples (SRR29660113 and SRR30413550)
+We ran the Mimic pipeline on the following SRA samples (SRR29660113 and SRR30413550). Metagenomes were simulated at 1k, 50k, and 100k reads for both 'perfect' reads and default error-prone reads. 
 
 TODO: ADD RESULTS
 
