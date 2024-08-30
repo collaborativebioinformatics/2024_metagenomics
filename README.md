@@ -32,7 +32,7 @@ Oxford Nanopore (ONT) sequencing is rapidly becoming a widely used sequencing te
 - [ ] Run Kraken2+Bracken and Sourmash on the MIMIC output for an ONT soil metagenome sample
 - [ ] Plot recall and precision and L1/L2 metrics for the ONT soil metagenome simulated data
 - [ ] Add installation and usage details to readme
-- [ ] Add awesome features
+- [ ] Add gene gain/gene loss events into the reference genomes
 
 ## Installation
 Mimic can be installed using the following steps: 
