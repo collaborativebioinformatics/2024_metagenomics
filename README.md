@@ -49,8 +49,6 @@ Oxford Nanopore (ONT) sequencing is rapidly becoming a widely used sequencing te
 - Ete3 v3.1.2
 - BWA v0.7.17
 - FastANI
-- Kraken2
-- Bracken
 - Nanosim
 
 ### To generate truth table
