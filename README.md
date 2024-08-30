@@ -1,6 +1,6 @@
 # Presentation
 
-(Slides)[https://docs.google.com/presentation/d/1B8EIzaHBaFGJ8tusNSZbC7iCNzR93OCdnW5cuvXCjAc/edit?usp=sharing]
+[Slides](https://docs.google.com/presentation/d/1B8EIzaHBaFGJ8tusNSZbC7iCNzR93OCdnW5cuvXCjAc/edit?usp=sharing)
 
 # MIMIC Metagenome Simulator
 
