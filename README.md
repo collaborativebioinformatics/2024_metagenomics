@@ -116,7 +116,30 @@ Trebonia kvetii	35.78
 ## Soil Example
 We ran the Mimic pipeline on the following SRA samples ([SRR29660113](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29660113&display=metadata) and [SRR30413550](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR30413550&display=metadata)). Metagenomes were simulated at 1k, 50k, and 100k reads for both 'perfect' reads and default error-prone reads. 
 
-TODO: ADD RESULTS
+For the 1k reads we can evaluate the accuracy of Kraken2's classification of each read at every taxonomic rank. For the 'perfect' reads, we get:
+
+```
+rank    FN      TP      FP      TN      Prec    Rec
+species 104     511     385     0       0.570   0.511
+genus   47      799     154     0       0.838   0.799
+family  41      862     97      0       0.899   0.862
+order   39      868     93      0       0.903   0.868
+class   33      955     12      0       0.988   0.955
+phylum  29      965     6       0       0.994   0.965
+```
+
+While for the error-prone reads, we get:
+```
+rank    FN      TP      FP      TN      Prec    Rec
+species 930     22      48      0       0.314   0.022
+genus   923     24      53      0       0.312   0.024
+family  924     28      48      0       0.368   0.028
+order   921     32      47      0       0.405   0.032
+class   920     37      43      0       0.463   0.037
+phylum  915     49      36      0       0.576   0.049
+```
+
+This illustrates the heavy impact that sequencing error can have on the accuracy of Kraken2 taxonomic classifications. For reads without error, Kraken's only shortcoming is that at very low taxonomic ranks it fails to classify in roughly half of the cases, but does quite well at genus and above. With error, it fails to classify over 90% of the reads at every rank and incorrectly classifies more than half of the rest!
 
 ## Contributors
 
