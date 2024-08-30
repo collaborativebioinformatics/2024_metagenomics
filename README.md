@@ -53,7 +53,7 @@ conda activate mimic
 `````
 
 ## Usage
-Mimic can be run using the following command:
+The Mimic simulator can be run using the following command:
 `````
 python mimic.py -i [fastq] -o [output_loc] -r [num_reads] --db [lemur_db] -t [threads]
 
@@ -79,7 +79,7 @@ Some helpful things to keep in mind:
 - Depending on the file size, the lemur/magnet/nanosim model generation steps are the slowest. Thus, once run on a sample, use the `--simulate-only` tag to generate new simulated data based off that profile
 
 
-## Pipeline Outputs:
+## MIMIC Simulator Pipeline Outputs:
 The following provides a brief description of important outputs from the Mimic simulator, assuming `-o output`
 
 `output/lemur/relative_abundance.tsv` -- Initial taxonomic profiling file from Lemur. Column 1 is taxonomy ID, and 'F' column is the relative abundance   
@@ -90,9 +90,28 @@ The following provides a brief description of important outputs from the Mimic s
 `output/nanosim/genome_list2.tsv` -- same as above, without abundances   
 `output/simulated_data/simulated.fasta` -- the simulated fasta files. See the nanosim documentation for description on the read headers  
 
+## Example truth table
+The truth table, based off of the abundances in `abundances.tsv`, is used for both input into nanosim as well as validating
+`````
+Size	100000
+Paraburkholderia fungorum	0.97
+Paraburkholderia phenazinium	2.9
+Caballeronia udeis	2.42
+Paraburkholderia sp. BCC1885	0.48
+Mycobacterium cookii	8.77
+Mycobacterium sp. 1245111.1	7.85
+Candidatus Mycobacterium methanotrophicum	40.82
+Trebonia kvetii	35.78
+`````
+
+## Soil Example
+We ran the Mimic pipeline on the following SRA samples (SRR29660113 and SRR30413550)
+
+TODO: ADD RESULTS
+
 ## Contributors
 
-Hackathon team: Todd	Treangen, Shwetha	Kumar, Ryan	Doughty, Sumaiya	Khan, Iva	Kotásková, Arthur	Shem Kasambula, Mike	Nute
+Hackathon team: Todd Treangen, Shwetha Kumar, Ryan Doughty, Sumaiya	Khan, Iva	Kotásková, Arthur	Shem Kasambula, Mike Nute
 
 ## References 
 
