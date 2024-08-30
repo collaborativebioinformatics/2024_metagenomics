@@ -114,7 +114,7 @@ Trebonia kvetii	35.78
 `````
 
 ## Soil Example
-We ran the Mimic pipeline on the following SRA samples ([SRR29660113](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29660113&display=metadata) and SRR30413550). Metagenomes were simulated at 1k, 50k, and 100k reads for both 'perfect' reads and default error-prone reads. 
+We ran the Mimic pipeline on the following SRA samples ([SRR29660113](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR29660113&display=metadata) and [SRR30413550](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR30413550&display=metadata)). Metagenomes were simulated at 1k, 50k, and 100k reads for both 'perfect' reads and default error-prone reads. 
 
 TODO: ADD RESULTS
 
